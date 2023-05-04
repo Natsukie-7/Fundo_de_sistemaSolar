@@ -1,0 +1,82 @@
+/* Esse codigo não foi de toal autoria minha, ele foi feito apenas com o intuito pedagogico de aprender */
+
+body { /* Resetar o body e aplicar as config de espaço */
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+}
+
+.container { /* Aqui é a perssonalização do container da pagina, que ira permitir que eu possa organizar tudo e deixar no centro da pagina de forma mais organica */
+    font-size: 10px;
+    width: 40em;
+    height: 40em;
+    position: relative;
+}
+
+#sol { /* Aqui irei fazer a figura do sol, tanto sua posição quanto cores e brilho */
+    position: absolute;
+    top: 15em;
+    left: 15em;
+    width: 10em;
+    height: 10em;
+    background-color: rgb(236, 223, 30);
+    border-radius: 50%;
+    box-shadow: 0 0 5em rgb(249, 255, 170);
+}
+
+#terra, #lua { /* Esses são as configurações dos traçados que os desenhas deixam da orbita do planeta, lembrando que esse não é o desenho, e sim o taçado da orbita */
+    position: absolute;
+    border-style: solid;
+    border-color: azure transparent transparent transparent;
+    border-width: 0.1em 0.1em 0 0;
+    border-radius: 50%;
+}
+
+#terra { /* Agora aqui sera gerado a "imagem" da terra, que seguira com a linha de orbita */
+    top: 5em;
+    left: 5em;
+    width: 30em;
+    height: 30em;
+
+    animation: orbita 36.5s linear infinite; /* Essa animação ainda não foi criada, mas ela que sera a responssavel de fazer a terra e alua girarem */
+}
+
+#lua { /* Tambem fazendo o sprite da lua e a animação dela */
+    top: 0;
+    right: 0;
+    width: 8em;
+    height: 8em;
+    animation: orbita 2.7s linear infinite;
+}
+
+#terra::before, #lua::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+#terra::before {
+    top: 2.8em;
+    right: 2.8em;
+    width: 3em;
+    height: 3em;
+    background-color: aquamarine;
+}
+
+#lua::before {
+    top: 0.8em;
+    right: 0.2em;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: silver;
+}
+
+@keyframes orbita { /* Animação de rotação */
+    to {
+        transform: rotate(360deg);
+    }
+}
